@@ -2,7 +2,7 @@ const express = require('express')
 const { Client, Intents } = require('discord.js');
 const client = new Client();
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 client.once('ready', () => {
 	console.log('Ready!');
