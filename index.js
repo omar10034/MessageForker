@@ -37,13 +37,13 @@ app.get('/webhookSend', async (req, res) => {
 	});
 })
 
-app.get('/serverChannels/:id',(req,res)=>{
+app.get('/serverChannels',(req,res)=>{
 	var channelsToSend = []
-	if(client.guilds.cache.get(req.params.id)==null) {
-		res.send({message:"No guild with id "+req.params.id+" is connected with the bot"})
+	if(client.guilds.cache.get(req.query.id)==null) {
+		res.send({message:"No guild with id "+req.query.id+" is connected with the bot"})
 		return
 	}
-	var channels = client.guilds.cache.get(req.params.id).channels.cache
+	var channels = client.guilds.cache.get(req.query.id).channels.cache
 	var keys = Array.from(channels.keys())
 	keys.forEach(key=>{
 		channel = channels.get(key)
@@ -61,8 +61,8 @@ app.get('/serverChannels/:id',(req,res)=>{
 		return 0;
 	}))
 })
-app.get('/channelMessages/:id',async (req,res)=>{
-	client.channels.cache.get(req.params.id).messages.fetch({ limit: 20 })
+app.get('/channelMessages',async (req,res)=>{
+	client.channels.cache.get(req.query.id).messages.fetch({ limit: 20 })
     .then(async msgs => {
       var fetchedArray = []
 	  msgList = [...msgs].reverse()

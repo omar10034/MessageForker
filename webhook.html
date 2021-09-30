@@ -29,12 +29,13 @@ return false
 </table>
 </div>
 <script>
-thisUrl = "https://messageforker.herokuapp.com"
+//thisUrl = "https://messageforker.herokuapp.com"
+thisUrl = "http://localhost:3000"
 selectChannel = document.getElementById("channelNames")
 messageContainer = document.getElementById("messageContainer")
 serverId = document.getElementById("serverId")
 askForServerChannels= function(serverId,starting=false){
-	fetch(thisUrl+"/serverChannels/"+serverId)
+	fetch(thisUrl+"/serverChannels?id="+serverId)
 	.then(response => {
 		return response.json()
 	})
@@ -56,7 +57,7 @@ serverId.value = localStorage.getItem("serverId")
 askForServerChannels(localStorage.getItem("serverId"),true)
 setInterval(()=>{
 	if(selectChannel.value == "") return
-	fetch(thisUrl+"/channelMessages/"+selectChannel.value)
+	fetch(thisUrl+"/channelMessages?id="+selectChannel.value)
 	.then(response => response.json())
 	 .then(data => {
 		messageContainer.innerHTML = ''
