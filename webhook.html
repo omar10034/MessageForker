@@ -3,7 +3,7 @@
 	<table>
 <form onsubmit='
 if(this.content.value==""){event.preventDefault()};
-fetch("http://localhost:3000/webhookSend?username="+document.whForm.username.value+"&avatar_url="+document.whForm.avatar_url.value+"&content="+document.whForm.content.value+"&channelId="+selectChannel.value)
+fetch("https://messagefetcher.herokuapp.com/webhookSend?username="+document.whForm.username.value+"&avatar_url="+document.whForm.avatar_url.value+"&content="+document.whForm.content.value+"&channelId="+selectChannel.value)
 .then(response => {
 	return response.json()
 })
