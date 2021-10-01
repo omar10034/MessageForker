@@ -16,11 +16,12 @@ return false
 	<div id="messageContainer" style="border:1px solid white; text-align:left;height:50%;overflow-y:scroll;padding:10px; width:75%">Messages loading... Please Wait</div><br /><br />
 	Id du serveur: <input id="serverId" onchange="askForServerChannels(this.value);localStorage.setItem('serverId',this.value)" type="number">
 	<select id="channelNames" onchange="localStorage.setItem('selectedChannel',this.selectedIndex)"></select><br /><br />
-	<div class="hidden">Lien de la photo de profile: <input name="avatar_url" onchange="localStorage.setItem('avatar_url',this.value);document.getElementById('image').src=this.value"><br /></div>
+	Lien de la photo de profile: <input name="avatar_url" onchange="localStorage.setItem('avatar_url',this.value);document.getElementById('image').src=this.value"><br />
 	Photo de profile:<br><img id="image" width="100px" height="100px" ondblclick="
 	linkOfPP = prompt('Lien de la photo de profile','')
 	if(linkOfPP != null)
 	document.whForm.avatar_url.value = linkOfPP
+	localStorage.setItem('avatar_url',document.whForm.avatar_url.value);document.getElementById('image').src=document.whForm.avatar_url.value
 	" alt="Entrez toutes les informations et appuyez sur le bouton 'envoyer'"><br>
 	<input name="username" onchange="localStorage.setItem('username',this.value)" class="username" placeholder="Nom d'utilisateur"><br /><br />
 	Message:<input name="content"><br /><br>
